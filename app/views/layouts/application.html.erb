@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+
+    <nav>
+      <ul>
+        <li class='font-bold'><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Posts', posts_path %></li>
+      </ul>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

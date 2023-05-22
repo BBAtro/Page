@@ -1,0 +1,16 @@
+<h1>Home</h1>
+
+<%# <%= @posts.inspect %> 
+
+<button class="border rounded p-2 border-red-500"><%= link_to 'Create post', new_post_path %></button><br>
+
+<% @posts.each do |post| %>
+
+  <time datetime="<%= post.formatted_created_at%>">
+    <%= post.formatted_created_at%>
+  </time>
+
+  <h2><%= post.title %></h2>
+
+  <h3><%= post.body %></h3>
+<% end %>
