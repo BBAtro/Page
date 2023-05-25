@@ -11,16 +11,42 @@
   </head>
 
   <body>
+    <header class="container mx-auto mt-4 border rounded p-2 border-blue-500">
+      <div class='flex justify-between'>
+        <span class="text-4xl m-2">
+          <p>Название</p>
+        </span>
+        <% if user_signed_in?%>
+          <div class="text-xl my-auto mr-4">
+          <%= current_user.name %>
+          </div>
+        <% else %>
+          <div class="text-xl my-auto mr-4">
+          <%= link_to 'Sign in', new_user_path %>
+          </div>
+        <% end %>
+      </div>
+    </header>
+    
+    <div class="flex mt-8">
+      <aside class="order-1 border rounded p-3 ml-5 h-screen w-2/12 border-red-500 object-left">
+        <div class="container mx-auto items-center text-center ">
+          <ul class="text-2xl">
+            <li class='font-bold'><%= link_to 'Home', root_path %></li>
+            <li class='font-bold'><%= link_to 'Posts', posts_path %></li>
+          </ul>
+        </div>
+      </aside>
+    
+      <main class="container mx-auto order-2 w-7/12">
+        <div class="border rounded p-2 border-green-500 h-screen">
+          <%= yield %>
+        </div>
+      </main>
 
-    <nav>
-      <ul>
-        <li class='font-bold'><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Posts', posts_path %></li>
-      </ul>
-    </nav>
+      <aside class="order-3 container mr-5 border rounded p-3 h-screen w-2/12 border-purple-500 object-right">
 
-    <main>
-      <%= yield %>
-    </main>
+      </aside>
+    </div>
   </body>
 </html>

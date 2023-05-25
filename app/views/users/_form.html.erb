@@ -1,0 +1,25 @@
+<%= form_with model: @user do |f|%>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.email_field :email, required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation, required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+  <button class="border rounded p-2 mt-2 border-red-500" ><%= f.submit "Submit"%></button>
+
+<% end %>

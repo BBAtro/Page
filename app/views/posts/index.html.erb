@@ -6,11 +6,15 @@
 
 <% @posts.each do |post| %>
 
-  <time datetime="<%= post.formatted_created_at%>">
-    <%= post.formatted_created_at%>
-  </time>
+  <article class="border rounded p-2 m-2 border-green-500">
 
-  <h2><%= post.title %></h2>
+    <time datetime="<%= post.formatted_created_at%>">
+      <%= post.formatted_created_at%>
+    </time>
 
-  <h3><%= post.body %></h3>
+    <h2><%= post.title %></h2>
+
+    <h3><%= post.body %></h3>
+
+  </article>
 <% end %>
