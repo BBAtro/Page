@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'pages#index'
 
-  resources :posts, only: %i[index new create]
+  resources :posts #, only: %i[ destroy index new create edit update show ]
+  
 
   resources :users, only: %i[new create]
+
+  resources :session, only: %i[new create]
 
 end

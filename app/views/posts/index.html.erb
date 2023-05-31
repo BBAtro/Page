@@ -2,7 +2,11 @@
 
 <%# <%= @posts.inspect %> 
 
-<button class="border rounded p-2 border-red-500"><%= link_to 'Create post', new_post_path %></button><br>
+<button class="border rounded p-2 border-red-500">
+  <%= link_to 'Create post', new_post_path %>
+</button>
+
+<br>
 
 <% @posts.each do |post| %>
 
@@ -15,6 +19,20 @@
     <h2><%= post.title %></h2>
 
     <h3><%= post.body %></h3>
+
+    <br>
+
+    <button class="border rounded p-2 border-purple-500">
+      <%= link_to 'Edit', edit_post_path(post)%>
+    </button>
+
+    <button class="border rounded p-2 border-purple-500">
+      <%= link_to 'Show', post_path(post) %>
+    </button>
+
+    <button class="border rounded p-2 border-purple-500">
+      <%= link_to 'Destroy', post_path(post),data: { method: :delete } %>
+    </button>
 
   </article>
 <% end %>
