@@ -12,20 +12,7 @@
 
   <body>
     <header class="container mx-auto mt-4 border rounded p-2 border-blue-500">
-      <div class='flex justify-between'>
-        <span class="text-4xl m-2">
-          <p>Название</p>
-        </span>
-        <% if user_signed_in?%>
-          <div class="text-xl my-auto mr-4">
-          <%= current_user.name %>
-          </div>
-        <% else %>
-          <div class="text-xl my-auto mr-4">
-          <%= link_to 'Sign in', new_user_path %>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'main/header' %>
     </header>
     
     <div class="flex mt-8">
@@ -48,5 +35,7 @@
 
       </aside>
     </div>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
   </body>
 </html>

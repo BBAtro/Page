@@ -1,0 +1,16 @@
+<h1>Log in</h1>
+
+<%= form_with url: session_path do |f| %>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.email_field :email, placeholder: 'Email', required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, required: true, minlength: 2, class: "border rounded p-2 border-cyan-500"%>
+  </div>
+
+ <%= f.submit "Submit", class: 'border rounded p-2 mt-2 border-red-500'%>
+<% end %>
