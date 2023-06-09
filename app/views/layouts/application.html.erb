@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
   <head>
     <title>Blog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,34 +12,26 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
 
-  <body>
-    <header class="container mx-auto mt-4 border rounded p-2 border-blue-500">
-      <%= render 'main/header' %>
-    </header>
+  <body class="bg-slate-50 dark:bg-zinc-900">
+    
+    <%= render 'main/header' %>
+    
     
     <div class="flex mt-8">
-      <aside class="order-1 border rounded p-3 ml-5 h-screen w-2/12 border-red-500 object-left">
-        <div class="container mx-auto items-center text-center ">
-          <ul class="text-2xl">
-            <li class='font-bold'><%= link_to 'Home', root_path %></li>
-            <li class='font-bold'><%= link_to 'Posts', posts_path %></li>
-          </ul>
-        </div>
-      </aside>
+      <%= render 'main/ntab' %>
     
-      <main class="container mx-auto order-2 w-7/12">
-        <div class="border rounded p-2 border-green-500 h-screen">
+      <main class="container border rounded-xl mx-auto order-2 w-7/12 p-2 h-screen bg-white dark:bg-zinc-800 dark:border-zinc-800 dark:text-white shadow-xl">
           <%= yield %>
-        </div>
       </main>
 
-      <aside class="order-3 container mr-5 border rounded p-3 h-screen w-2/12 border-purple-500 object-right">
+      <aside class="order-3 container border rounded-xl mr-5 p-3 w-2/12 h-screen object-right bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
 
       </aside>
     </div>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <%# <script src="//unpkg.com/alpinejs" defer></script> %>
   </body>
 </html>
