@@ -1,14 +1,11 @@
-<header class="container border rounded-xl mx-auto mt-4 p-2 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-lg">
-    <div class='flex justify-between'>
-        <span class="text-4xl m-2 w-40 dark:text-white">
-            <p>
-                Название
+<header class="sticky -top-20 border rounded-xl w-4/6 mx-auto mt-1 p-2 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-lg">
+    <div class='flex justify-between items-center'>
+        <span class="flex text-4xl ml-3 m-2 w-40 items-center dark:text-white ">
+            <%= image_tag("logoPng.png", :alt => "rss feed", class: "h-16 w-14 drop-shadow-2xl") %>
+            <p class="pl-4">
+                Page
             </p>
         </span>
-
-            <button @click="darkMode = !darkMode" class="pr-20 dark:text-white">
-            dl
-            </button>
 
         <% if user_signed_in?%>
             <div>
@@ -35,7 +32,7 @@
                     x-on:keydown.escape.prevent.stop="close($refs.button)"
                     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
                     x-id="['dropdown-button']"
-                    class="relative"
+                    class="relative z-50"
                 >
                     <!-- Button -->
                     <button
@@ -44,7 +41,7 @@
                         :aria-expanded="open"
                         :aria-controls="$id('dropdown-button')"
                         type="button"
-                        class="flex items-center gap-2 border rounded-xl px-5 py-2.5 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+                        class="flex items-center gap-2 border rounded-xl px-5 py-2.5 mr-3 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
                         <%= current_user.login %>
 
@@ -61,8 +58,8 @@
                         x-transition.origin.top.left
                         x-on:click.outside="close($refs.button)"
                         :id="$id('dropdown-button')"
-                        style="display: none;"
-                        class="absolute left-0 mt-2 w-40 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+                        style=""
+                        class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
 
                         <li href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">

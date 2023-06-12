@@ -1,15 +1,12 @@
 <%# <%= @posts.inspect %> 
-<div class="justify-items-center">
+<% provide :page_title, "Posts" %>
+<% currently_at 'Posts'%>
 
-  <h1>Home</h1>
+<div class="flex flex-col justify-items-center">
 
-  <hr class="m-6">
+      <%= link_to 'Create post', new_post_path, class: "border rounded-xl h-12 w-6/12 mx-auto my-4 p-2 text-center dark:bg-zinc-700 dark:border-zinc-700 shadow-md" %>
 
-  <button class="border rounded-xl h-16 w-8/12 mx-44 p-2 dark:bg-zinc-700 dark:border-zinc-700 shadow-md">
-    <%= link_to 'Create post', new_post_path %>
-  </button>
-
-  <hr class="my-6 mx-10">
+    <hr class="my-3 mx-10">
 
   <% @posts.each do |post| %>
 

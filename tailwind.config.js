@@ -6,4 +6,10 @@ module.exports = {
     './app/javascript/**/*.js',
   ],
   darkMode: 'class',
+  // theme: {
+  //   colors: {
+  //     'blue': '#00D8FF',
+  //     'pink': '#FF00BE '
+  //   }
+  // }
 }

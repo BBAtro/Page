@@ -5,7 +5,12 @@
   x-bind:class="{ 'dark': darkMode }"
 >
   <head>
-    <title>Blog</title>
+    <%= favicon_link_tag asset_path('favicon.jpeg') %>
+    
+    <title>
+      <%= full_title(yield(:page_title))%>
+    </title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,24 +19,25 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-
-  <body class="bg-slate-50 dark:bg-zinc-900">
+  
+    <body class="relative bg-slate-50 dark:bg-zinc-900">
+      
+      <button @click="darkMode = !darkMode" class="fixed border rounded-xl m-5 h-14 w-14 bg-white dark:bg-zinc-800 dark:text-white dark:border-zinc-800 shadow-xl">
+        <%= image_tag("moon.png", :alt => "rss feed", class: "m-2 h-10 w-10")%>
+      </button>
     
-    <%= render 'main/header' %>
-    
-    
-    <div class="flex mt-8">
-      <%= render 'main/ntab' %>
-    
-      <main class="container border rounded-xl mx-auto order-2 w-7/12 p-2 h-screen bg-white dark:bg-zinc-800 dark:border-zinc-800 dark:text-white shadow-xl">
-          <%= yield %>
-      </main>
+      <%= render 'main/header', class: "z-50" %>
+      
+      <div class="relative flex z-0 p-1 mt-6">
+        <%= yield :nbar %>
+      
+        <main class="container border rounded-xl mx-auto order-2 w-6/12 p-2 h-max bg-white dark:bg-zinc-800 dark:border-zinc-800 dark:text-white shadow-xl">
+            <%= yield %>
+        </main>
 
-      <aside class="order-3 container border rounded-xl mr-5 p-3 w-2/12 h-screen object-right bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
+        <%= render 'main/aside' %>
+      </div>
 
-      </aside>
-    </div>
-
-    <%# <script src="//unpkg.com/alpinejs" defer></script> %>
-  </body>
+      <%# <script src="//unpkg.com/alpinejs" defer></script> %>
+    </body>
 </html>
