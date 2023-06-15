@@ -17,19 +17,21 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   
     <body class="relative bg-slate-50 dark:bg-zinc-900">
       
-      <button @click="darkMode = !darkMode" class="fixed border rounded-xl m-5 h-14 w-14 bg-white dark:bg-zinc-800 dark:text-white dark:border-zinc-800 shadow-xl">
+      <button @click="darkMode = !darkMode" 
+      class="fixed border rounded-xl m-5 h-14 w-14 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 dark:bg-zinc-800 dark:border-zinc-800 dark:text-white shadow">
         <%= image_tag("moon.png", :alt => "rss feed", class: "m-2 h-10 w-10")%>
       </button>
     
-      <%= render 'main/header', class: "z-50" %>
+      <%= render 'main/header' %>
       
-      <div class="relative flex z-0 p-1 mt-6">
-        <%= yield :nbar %>
+      <div class="flex p-1 mt-6">
+        <%= yield :nbar %> 
       
         <main class="container border rounded-xl mx-auto order-2 w-6/12 p-2 h-max bg-white dark:bg-zinc-800 dark:border-zinc-800 dark:text-white shadow-xl">
             <%= yield %>
@@ -37,7 +39,5 @@
 
         <%= render 'main/aside' %>
       </div>
-
-      <%# <script src="//unpkg.com/alpinejs" defer></script> %>
     </body>
 </html>

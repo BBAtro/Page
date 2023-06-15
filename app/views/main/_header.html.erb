@@ -41,7 +41,7 @@
                         :aria-expanded="open"
                         :aria-controls="$id('dropdown-button')"
                         type="button"
-                        class="flex items-center gap-2 border rounded-xl px-5 py-2.5 mr-3 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+                        class="flex items-center gap-2 border rounded-xl px-5 py-2.5 mr-3 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow"
                     >
                         <%= current_user.login %>
 
@@ -62,19 +62,16 @@
                         class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
 
-                        <li href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                            <%= link_to 'Destroy', session_path, data: { method: :delete }, class: "text-red-500" %>
-                        </li>
-                        <li href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                            <%= link_to 'Destroy', session_path, data: { method: :delete }, class: "text-red-500" %>
+                        <li>
+                            <%= link_to 'Destroy', session_path, data: { method: :delete }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
                         </li>
                     </ul>
                 </div>
             </div>
         <% else %>
             <div class="text-xl my-auto mr-4 space-x-4 dark:text-white">
-            <%= link_to 'Sign Up', new_user_path %>
-            <%= link_to 'Log in', new_session_path %>
+            <%= link_to 'Sign Up', new_user_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+            <%= link_to 'Log In', new_session_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
             </div>
         <% end %>
     </div>

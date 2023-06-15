@@ -1,3 +1,6 @@
-<h1>New Post</h1>
+<% provide :page_title, "New Post" %>
+<% currently_at 'New Post'%>
+
+<h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">New Post</h1>
 
 <%= render 'form' %>
