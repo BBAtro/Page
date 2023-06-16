@@ -6,4 +6,12 @@ class Post < ApplicationRecord
     created_at.strftime('%H:%M %d.%m.%Y')
   end
 
+  def self.search(search)
+    if search 
+        where(["title LIKE ?","%#{search}%"])
+    else
+        all
+    end
+  end
+
 end

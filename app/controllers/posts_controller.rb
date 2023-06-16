@@ -2,6 +2,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+    @posts = Post.search(params[:search])  
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def new 

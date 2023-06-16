@@ -25,4 +25,17 @@ module ApplicationHelper
       base_title
     end
   end
+
+  def current_time
+    todays = DateTime.now
+    todays.strftime("%B %d").strip
+  end
+
+  def current_date
+    current_time = DateTime.now.strftime("%_m/%d").strip
+    url = "http://numbersapi.com/#{current_time}/date"
+    response = Faraday.get url
+    response.body.to_s
+  end
+
 end

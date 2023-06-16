@@ -91,6 +91,11 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     erubi (1.12.0)
+    faraday (2.7.4)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.13.0)
@@ -197,6 +202,8 @@ DEPENDENCIES
   cssbundling-rails
   debug
   draper
+  faraday
+  geocoder
   jbuilder
   jsbundling-rails
   puma (~> 5.0)

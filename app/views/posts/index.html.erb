@@ -3,9 +3,17 @@
 <% currently_at 'Posts'%>
 
 <div class="flex flex-col justify-items-center">
+  <div class="flex justify-between">
+    <div class="border rounded-xl h-12 mx-10 my-4 text-black dark:bg-zinc-700 dark:border-zinc-700 shadow">
+      <%= form_tag('/posts', method: 'get', local: true) do %>
+        <%= text_field_tag(:search, nil,placeholder: 'Search for anything...', class: 'border rounded-xl indent-4 h-12 w-60 placeholder:opacity-50 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 shadow') %>
+        <%= submit_tag("Search", class: 'border rounded-xl h-12 w-20 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow') %>
+      <% end %>
+    </div>
 
-  <%= link_to 'Create post', new_post_path, class: "border rounded-xl h-12 w-5/12 mx-auto my-4 p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
-
+    <%= link_to 'Create post', new_post_path,
+     class: "border rounded-xl h-12 w-80 mr-10 my-4 p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+  </div>
   <hr class="my-3 mx-10">
 
   <% @posts.each do |post| %>
