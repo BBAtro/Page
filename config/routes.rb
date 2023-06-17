@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :posts #, only: %i[ destroy index new create edit update show ]
   
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[index new create edit update]
 
   resource :session, only: %i[new create destroy]
 

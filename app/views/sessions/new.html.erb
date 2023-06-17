@@ -1,20 +1,36 @@
 <% provide :page_title, "Log In" %>
 <% currently_at 'Log In'%>
 
-<h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">Log In</h1>
+<h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
+  Log In
+</h1>
 
 <%= form_with url: session_path do |f| %>
 
   <div class="flex flex-col justify-items-center">
 
-    <%= f.label :email, class: "p-3 text-2xl mx-auto" %>
-    <%= f.email_field :email, placeholder: 'Email', required: true, minlength: 2, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+    <div class="my-3 mt-6 mx-auto">
+      <%= f.label :email, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
+    </div>
 
-    <%= f.label :password, class: "p-3 text-2xl mx-auto" %>
-    <%= f.password_field :password, required: true, minlength: 2, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+    <div class="mx-52">
+      <%= f.email_field :email, required: true, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
+    </div>
 
+    <div class="my-3 mx-auto">
+      <%= f.label :password, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
+    </div>
 
-  <%= f.submit "Submit",
-   class: 'border rounded-xl w-1/4 p-2 mx-auto my-5 bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow'%>
+    <div class="mx-52">
+      <%= f.password_field :password, required: true, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
+    </div>
+
+    <div class="border rounded-xl px-4 py-2 mb-2 mx-96 dark:bg-zinc-700 dark:border-zinc-700 shadow">
+      <%= f.check_box :remember_me, value: '1'%>
+      <%= f.label :remember_me%>
+    </div>
+
+    <%= f.submit "Submit",
+    class: 'border rounded-xl cursor-pointer w-1/4 p-2 mx-auto my-5 bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow'%>
   </div>
 <% end %>

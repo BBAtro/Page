@@ -4,21 +4,21 @@
 
 <div class="flex flex-col justify-items-center">
   <div class="flex justify-between">
-    <div class="border rounded-xl h-12 mx-10 my-4 text-black dark:bg-zinc-700 dark:border-zinc-700 shadow">
+    <div class="border rounded-xl h-15 p-0.5 mx-10 my-4 text-black dark:bg-zinc-700 dark:border-zinc-700 shadow">
       <%= form_tag('/posts', method: 'get', local: true) do %>
-        <%= text_field_tag(:search, nil,placeholder: 'Search for anything...', class: 'border rounded-xl indent-4 h-12 w-60 placeholder:opacity-50 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 shadow') %>
+        <%= text_field_tag(:search, nil, placeholder: 'Search for anything...', class: 'border rounded-xl indent-4 h-12 w-60 placeholder:opacity-50 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 shadow') %>
         <%= submit_tag("Search", class: 'border rounded-xl h-12 w-20 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow') %>
       <% end %>
     </div>
 
     <%= link_to 'Create post', new_post_path,
-     class: "border rounded-xl h-12 w-80 mr-10 my-4 p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+     class: "border rounded-xl h-15 w-80 mr-10 my-4 p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
   </div>
   <hr class="my-3 mx-10">
 
   <% @posts.each do |post| %>
 
-  <article  class="border rounded-xl p-2 m-4 dark:bg-zinc-700 dark:border-zinc-700 shadow">
+  <article  class="border rounded-xl p-2 pb-3 m-4 dark:bg-zinc-700 dark:border-zinc-700 shadow">
 
       <div class="flex justify-between">
 
@@ -90,9 +90,7 @@
 
       <h3 class="m-2"><%= sanitize post.body %></h3>
 
-      <button class="my-2">
-        <%= link_to 'Открыть', post_path(post), class: "border rounded-xl p-2 text-center dark:bg-zinc-600 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
-      </button>
+      <%= link_to 'Открыть', post_path(post), class: "border rounded-xl p-2 my-2 text-center dark:bg-zinc-600 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
 
     </article>
   <% end %>

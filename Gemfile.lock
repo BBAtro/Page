@@ -51,10 +51,6 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.0.4.3)
       activesupport (= 7.0.4.3)
-    activemodel-serializers-xml (1.0.2)
-      activemodel (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
     activerecord (7.0.4.3)
       activemodel (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -83,19 +79,11 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
-    draper (4.0.2)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
-      activemodel-serializers-xml (>= 1.0)
-      activesupport (>= 5.0)
-      request_store (>= 1.0)
-      ruby2_keywords
     erubi (1.12.0)
-    faraday (2.7.4)
+    faraday (2.7.6)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.13.0)
@@ -103,9 +91,6 @@ GEM
     io-console (0.6.0)
     irb (1.6.4)
       reline (>= 0.3.0)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
     loofah (2.21.2)
@@ -168,8 +153,6 @@ GEM
     rake (13.0.6)
     reline (0.3.3)
       io-console (~> 0.5)
-    request_store (1.5.1)
-      rack (>= 1.4)
     ruby2_keywords (0.0.5)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -183,6 +166,9 @@ GEM
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    valid_email2 (4.0.6)
+      activemodel (>= 3.2)
+      mail (~> 2.5)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -201,16 +187,14 @@ DEPENDENCIES
   bootsnap
   cssbundling-rails
   debug
-  draper
-  faraday
-  geocoder
-  jbuilder
+  faraday (~> 2.7, >= 2.7.6)
   jsbundling-rails
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   sprockets-rails
   sqlite3 (~> 1.4)
   tzinfo-data
+  valid_email2 (~> 4.0, >= 4.0.6)
   web-console
 
 RUBY VERSION

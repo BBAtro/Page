@@ -1,0 +1,22 @@
+<% provide :page_title, "Profile" %>
+<% currently_at 'Profile'%>
+
+<h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
+  Profile
+</h1>
+
+<div>
+
+  <h1>Login</h1>
+
+  <%= current_user.login %> 
+
+  <br>
+
+  <%= current_user.email %>
+
+  <br>
+
+  <%= link_to 'Edit', edit_user_path(current_user), class: "border rounded-xl ml- p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+
+</div>

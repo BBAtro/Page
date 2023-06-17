@@ -22,11 +22,9 @@ gem "jsbundling-rails"
 gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+gem 'faraday', '~> 2.7', '>= 2.7.6'
 
-gem "draper"
-
-gem "faraday"
+gem 'valid_email2', '~> 4.0', '>= 4.0.6'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
