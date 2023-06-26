@@ -22,9 +22,14 @@
 
       <div class="flex justify-between">
 
-        <time datetime="<%= post.formatted_created_at%>" class="opacity-50">
-            <%= post.formatted_created_at%>
-        </time>
+        <section>
+          <%= post.user.login %><br>
+        
+
+          <time datetime="<%= post.formatted_created_at%>" class="opacity-50">
+              <%= post.formatted_created_at%>
+          </time>
+        </section>
 
         <div
           x-data="{
@@ -86,7 +91,7 @@
         </div>
       </div>
 
-      <h2 class="text-2xl m-2 py-2"><%= sanitize post.title %></h2>
+      <h2 class="text-3xl font-bold m-2 py-2"><%= sanitize post.title, class: "" %></h2>
 
       <h3 class="m-2"><%= sanitize post.body %></h3>
 

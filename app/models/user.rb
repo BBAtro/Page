@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true,

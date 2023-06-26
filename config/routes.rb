@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'pages#index'
 
-  resources :posts #, only: %i[ destroy index new create edit update show ]
+  resources :posts do 
+    resources :comments, only: %i[edit update create destroy]
+  end
   
 
   resources :users, only: %i[index new create edit update]

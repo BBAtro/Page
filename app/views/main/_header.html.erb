@@ -1,7 +1,12 @@
 <header class="sticky -top-20 border rounded-xl w-4/6 mx-auto mt-1 p-2 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-lg">
     <div class='flex justify-between items-center'>
         <span class="flex text-4xl ml-3 m-2 w-40 items-center dark:text-white ">
-            <%= image_tag("logoPng.png", :alt => "rss feed", class: "h-16 w-14 drop-shadow-2xl") %>
+            <div x-show="!darkMode">
+                <%= image_tag("logoPng.png", class: "h-16 w-14 drop-shadow-2xl") %>
+            </div>
+            <div x-show="darkMode">
+                <%= image_tag("logoWhite.png", class: "h-16 w-14 drop-shadow-2xl")%>
+            </div>
             <p class="pl-4">
                 Page
             </p>
@@ -63,16 +68,16 @@
                         class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
 
-                            <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                            <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm dark:text-white hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
 
-                            <%= link_to 'Destroy', session_path, data: { method: :delete }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                            <%= link_to 'Log Out', session_path, data: { method: :delete }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
                             
                     </ul>
                 </div>
             </div>
         <% else %>
             <div class="text-xl my-auto mr-4 space-x-4 dark:text-white">
-            <%= link_to 'Sign Up', new_user_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+            <%= link_to 'Sign Up', new_user_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:text-white dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
             <%= link_to 'Log In', new_session_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
             </div>
         <% end %>
