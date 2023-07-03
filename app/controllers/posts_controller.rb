@@ -3,9 +3,11 @@ class PostsController < ApplicationController
   before_action :set_posts!, only: %i[show destroy edit update]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    # @posts = Post.order(created_at: :desc)
 
-    @posts = Post.search(params[:search])
+    @posts = Post.search(params[:search]).order(created_at: :desc)
+
+    @posts = @posts.decorate
 
     # respond_to do |format|
     #   format.html
@@ -42,8 +44,10 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = @post.decorate
     @comment = @post.comments.build
     @comments = @post.comments.order(created_at: :desc) #будет выдавать все комменты привязаные к определленному посту
+    @comments = @comments.decorate
   end
 
   private

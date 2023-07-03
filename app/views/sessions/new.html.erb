@@ -25,9 +25,9 @@
       <%= f.password_field :password, required: true, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
     </div>
 
-    <div class="border rounded-xl px-4 py-2 mb-2 mx-96 dark:bg-zinc-700 dark:border-zinc-700 shadow">
+    <div class="border rounded-xl px-4 py-2 mb-2 mx-auto w-3/12 dark:bg-zinc-700 dark:border-zinc-700 shadow">
       <%= f.check_box :remember_me, value: '1'%>
-      <%= f.label :remember_me%>
+      <%= f.label :remember_me, class: "p-2"%>
     </div>
 
     <%= f.submit "Submit",

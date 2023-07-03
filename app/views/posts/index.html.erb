@@ -18,13 +18,19 @@
 
   <% @posts.each do |post| %>
 
-  <article  class="border rounded-xl p-2 pb-3 m-4 dark:bg-zinc-700 dark:border-zinc-700 shadow">
+  <article class="border rounded-xl p-2 pb-3 m-4 dark:bg-zinc-700 dark:border-zinc-700 shadow">
 
       <div class="flex justify-between">
 
         <section>
-          <%= post.user.login %><br>
-        
+          <div class="flex justify-stretch border p-0 rounded-md dark:bg-zinc-600 dark:border-zinc-600 shadow">
+            <div class="flex-0">
+              <%= post.user.gravatar %>
+            </div>
+            <div class="grow p-2 text-center">
+             <%= post.user.login %> 
+            </div>
+          </div>
 
           <time datetime="<%= post.formatted_created_at%>" class="opacity-50">
               <%= post.formatted_created_at%>
@@ -92,8 +98,6 @@
       </div>
 
       <h2 class="text-3xl font-bold m-2 py-2"><%= sanitize post.title, class: "" %></h2>
-
-      <h3 class="m-2"><%= sanitize post.body %></h3>
 
       <%= link_to 'Открыть', post_path(post), class: "border rounded-xl p-2 my-2 text-center dark:bg-zinc-600 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
 

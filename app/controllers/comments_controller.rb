@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.build comment_create_params
     @comments = Comment.order(created_at: :desc)
+    @comments = @comments.decorate
 
     if @comment.save
       # redirect_to posts_path(@post) 

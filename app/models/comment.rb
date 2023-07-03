@@ -4,7 +4,9 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true
 
-  def formatted_created_at
-    created_at.strftime('%H:%M %d.%m.%Y')
-  end
+  # def formatted_created_at
+  #   created_at.strftime('%H:%M %d.%m.%Y')
+  # end
+
+  
 end
