@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user!, only: %i[edit update]
 
   def index
+    @posts = current_user.posts.order(created_at: :desc).decorate
   end
 
   def edit
@@ -38,6 +39,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :login, :password, :password_confirmation, :old_password)
+    params.require(:user).permit(:email, :login, :password, :password_confirmation, :old_password, :description)
   end
 end

@@ -7,7 +7,7 @@
       <%= f.label :email, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
     </div>
 
-    <div class="mx-52">
+    <div class="mx-auto">
       <%= f.email_field :email, required: true, minlength: 2 ,placeholder: 'E-mail', class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
     </div>
 
@@ -15,7 +15,7 @@
       <%= f.label :login, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
     </div>
     
-    <div class="mx-52">
+    <div class="mx-auto">
       <%= f.text_field :login, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
     </div>
 
@@ -23,7 +23,7 @@
       <%= f.label :password, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
     </div>
     
-    <div class="mx-52">
+    <div class="mx-auto">
       <%= f.password_field :password, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
     </div>
 
@@ -31,18 +31,26 @@
       <%= f.label :password_confirmation, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
     </div>
     
-    <div class="mx-52">
+    <div class="mx-auto">
       <%= f.password_field :password_confirmation, minlength: 2, class: "border rounded-xl w-11/12 p-3 mb-4 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
     </div>
 
     <% unless @user.new_record? %>
 
       <div class="my-3 mx-auto">
-      <%= f.label :old_password, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
+        <%= f.label :old_password, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
       </div>
       
-      <div class="mx-52">
-      <%= f.password_field :old_password, minlength: 2, class: "border rounded-xl w-11/12 p-3 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
+      <div class="mx-auto">
+        <%= f.password_field :old_password, minlength: 2, class: "border rounded-xl w-11/12 p-3 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
+      </div>
+
+      <div class="my-3 mx-auto">
+        <%= f.label :description, class: "border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
+      </div>
+
+      <div class="mx-auto">
+        <%= f.text_area :description, class: "border rounded-xl w-11/12 p-3 mx-4 text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow"%>
       </div>
       
     <% end %>

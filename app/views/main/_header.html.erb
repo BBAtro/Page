@@ -47,9 +47,9 @@
                         :aria-expanded="open"
                         :aria-controls="$id('dropdown-button')"
                         type="button"
-                        class="flex items-center gap-2 border rounded-xl px-5 py-2.5 mr-3 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow"
+                        class="flex items-center gap-2 border rounded-xl px-3 py-2.5 mr-3 m-2 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow"
                     >
-                        <%= %>
+                        <%= current_user.gravatar(40)%>
                         <%= current_user.login %>
 
                         <!-- Heroicon: chevron-down -->
@@ -71,7 +71,7 @@
 
                         <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm dark:text-white hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
 
-                        <%= link_to 'Log Out', session_path, data: { method: :delete }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                        <%= link_to 'Log Out', session_path, data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
                             
                     </ul>
                 </div>
