@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
   before_action :require_no_authentication, only: %i[new create]
   before_action :require_authentication, only: %i[edit update]
-  before_action :set_user!, only: %i[edit update]
+  before_action :set_user!, only: %i[show edit update]
 
   def index
     @posts = current_user.posts.order(created_at: :desc).decorate
   end
+
+  def show
+    @user = @user.decorate
+    @posts = @user.posts.order(created_at: :desc).decorate
+  end 
 
   def edit
   end

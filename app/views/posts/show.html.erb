@@ -2,9 +2,9 @@
 <% currently_at 'Show Post'%>
 
 <div class="p-2">
-  <h1 class="text-4xl"><%= sanitize @post.title%></h1>
+  <h1 class="text-4xl font-bold break-words"><%= sanitize @post.title%></h1>
 
-  <h2 class="pt-6 text-2xl"><%= sanitize @post.body%></h2>
+  <h2 class="pt-6 text-2xl break-words"><%= sanitize @post.body%></h2>
 </div>
 
 <hr class="my-3 mx-7 mb-5">
@@ -94,7 +94,7 @@
       </div>
 
 
-      <h2 class='text-xl'>
+      <h2 class='text-xl break-words'>
         <%= comment.body %>
       </h2>
     </article>

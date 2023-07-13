@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   end
   
 
-  resources :users, only: %i[index new create edit update]
+  resources :users, only: %i[index show new create edit update]
+
+  # get '/users/:id', to: 'users#show'
+
 
   resource :session, only: %i[new create destroy]
 

@@ -1,5 +1,5 @@
-<% provide :page_title, "Profile" %>
-<% currently_at 'Profile'%>
+<% provide :page_title, "Show user" %>
+<% currently_at 'Show user'%>
 
 <h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
   Profile
@@ -9,11 +9,8 @@
 
   <div class="flex flex-col justify-items-center w-5/12">
     <div class="mx-auto">
-      <%= current_user.gravatar(244, "rounded-t-xl") %>
+      <%= @user.gravatar(244, "rounded-t-xl") %>
     </div>
-    <h1 class="border rounded-b-xl p-2 mb-2 w-9/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-      Установка аватара проводится через сервис Gravatar <a href="https://gravatar.com" class="underline">https://gravatar.com</a>
-    </h1>
   </div>
 
   <div class="mx-auto">
@@ -23,15 +20,7 @@
     </h1>
 
     <div class="border rounded-xl p-2 mb-3 mx-auto w-12/12 max-w-sm overflow-y-auto break-words object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-     <%= current_user.login %> 
-    </div>
-
-    <h1 class="border rounded-xl p-2 mb-2 w-3/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-      Email
-    </h1>
-
-    <div class="border rounded-xl p-2 mb-3 mx-auto w-12/12 max-w-sm overflow-y-auto break-words object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-      <%= current_user.email %>
+     <%= @user.login %>
     </div>
 
     <h1 class="border rounded-xl p-2 mb-2 w-4/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
@@ -39,7 +28,7 @@
     </h1>
 
     <div class="border rounded-xl p-3 mb-4 mx-auto w-12/12 max-w-sm h-fit overflow-y-auto break-words object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-      <%= sanitize current_user.description %>
+      <%= sanitize @user.description %>
     </div>
 
     <%= link_to 'Edit', edit_user_path(current_user),
@@ -51,8 +40,8 @@
 
 <div class="mt-8">
 
-  <h1 class="border rounded-xl p-2 mb-2 w-2/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
-    Your posts
+  <h1 class="border rounded-xl p-2 mb-2 w-3/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
+    Author's posts
   </h1>
 
   <% @posts.each do |post| %>

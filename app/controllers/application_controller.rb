@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
   include Authentication
-  include ErrorHandling
+  # include ErrorHandling
 end

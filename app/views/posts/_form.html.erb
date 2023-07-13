@@ -4,15 +4,25 @@
 
   <div class="flex flex-col justify-items-center">
 
-    <%= f.label :title, class: "border rounded-xl px-6 py-2 mx-auto my-3 font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700" %><br>
-    <%= f.text_field :title, required: true, minlength: 2,
-     class: "border rounded-xl w-8/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
-    
-    <hr class="mt-5 mx-10">
+    <div class="mx-auto mt-2 mb-4">
+      <%= f.label :title, class: "border rounded-xl px-6 py-2 mx-auto my-3 font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700" %>
+    </div>
 
-    <%= f.label :body, class: "border rounded-xl px-6 py-2 mx-auto my-3 font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700" %><br> 
-    <%= f.text_area :body, required: true, minlength: 2,
-     class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+    <div class="mx-auto w-8/12">
+      <%= f.text_field :title, required: true, minlength: 2,
+      class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+    </div>
+
+    <hr class="my-5 mx-10">
+
+    <div class="mx-auto mb-4">
+      <%= f.label :body, class: "border rounded-xl px-6 py-2 mx-auto my-3 font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700" %>
+    </div>
+
+    <div class="mx-auto w-11/12">
+      <%= f.text_area :body, required: true, minlength: 2,
+      class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+    </div>
 
     <%= f.submit "Submit",
      class: 'border rounded-xl w-1/4 p-2 mx-auto my-5 bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow'%>
