@@ -91,13 +91,14 @@
                 style=""
                 class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
             >
-
-              <li>
-                <%= link_to 'Edit', edit_post_path(post), class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
-              </li>
-              <li>
-                <%= link_to 'Destroy', post_path(post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
-              </li>
+              <% if post.user.id==current_user.id %>
+                <li>
+                  <%= link_to 'Edit', edit_post_path(post), class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                </li>
+                <li>
+                  <%= link_to 'Destroy', post_path(post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>

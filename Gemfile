@@ -28,6 +28,8 @@ gem 'faraday', '~> 2.7', '>= 2.7.6'
 
 gem 'valid_email2', '~> 4.0', '>= 4.0.6'
 
+gem 'i18n', '~> 1.14', '>= 1.14.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

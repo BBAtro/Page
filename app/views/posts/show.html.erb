@@ -1,6 +1,85 @@
 <% provide :page_title, "Show Post" %>
 <% currently_at 'Show Post'%>
 
+ <div class="flex justify-between">
+
+  <section>
+    <a href="/users/<%= @post.user.id%>">
+      <div class="flex justify-stretch border rounded-md dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 dark:hover:bg-pink-500 shadow">
+        <div class="flex-0">
+          <%= @post.user.gravatar(40, "rounded-md") %>
+        </div>
+        <div class="grow p-2 text-center">
+        <%= @post.user.login %> 
+        </div>
+      </div>
+    </a>
+
+    <time datetime="<%= @post.formatted_created_at%>" class="opacity-50">
+        <%= @post.formatted_created_at%>
+    </time>
+  </section>
+
+  <div
+    x-data="{
+        open: false,
+        toggle() {
+            if (this.open) {
+                return this.close()
+            }
+
+            this.$refs.button.focus()
+
+            this.open = true
+        },
+        close(focusAfter) {
+            if (! this.open) return
+
+            this.open = false
+
+            focusAfter && focusAfter.focus()
+        }
+    }"
+    x-on:keydown.escape.prevent.stop="close($refs.button)"
+    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+    x-id="['dropdown-button']"
+    class="relative z-50 justify-items-end"
+>
+    <!-- Button -->
+    <button
+        x-ref="button"
+        x-on:click="toggle()"
+        :aria-expanded="open"
+        :aria-controls="$id('dropdown-button')"
+        type="button"
+        class="flex items-center gap-2 pr-1 dark:text-white bg-white dark:bg-zinc-800 dark:border-zinc-800"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
+          <path fill-rule="evenodd" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <!-- Panel -->
+    <ul
+        x-ref="panel"
+        x-show="open"
+        x-transition.origin.top.left
+        x-on:click.outside="close($refs.button)"
+        :id="$id('dropdown-button')"
+        style=""
+        class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+    >
+
+      <li>
+        <%= link_to 'Edit', edit_post_path(@post), class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+      </li>
+      <li>
+        <%= link_to 'Destroy', post_path(@post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <div class="p-2">
   <h1 class="text-4xl font-bold break-words"><%= sanitize @post.title%></h1>
 
@@ -9,94 +88,4 @@
 
 <hr class="my-3 mx-7 mb-5">
 
-<%= render 'main/errors', object: @comment %>
-
-<div>
-  <%= form_with model: [@post, @comment] do |f|%>
-      <div class="flex justify-between mx-5">
-        <%= f.text_area :body,
-          class: "border rounded-xl p-2 mb-2 w-10/12 object-center text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow" %>
-        <%= f.submit "Submit", 
-        class: 'border rounded-xl h-16 w-36 m-1 ml-2 dark:text-white text-xl dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow' %>
-      </div>
-
-      
-  <% end %>
-</div>
-
-<div>
-  <% @comments.each do |comment| %>
-    <article class="border rounded-xl p-2 pb-3 my-3 mx-1 dark:bg-zinc-700 dark:border-zinc-700 shadow" >
-       <div class="flex justify-between">
-
-        <time datetime="<%= comment.formatted_created_at %>" class="opacity-50">
-            <%= comment.formatted_created_at %>
-        </time>
-
-        <div
-          x-data="{
-              open: false,
-              toggle() {
-                  if (this.open) {
-                      return this.close()
-                  }
-
-                  this.$refs.button.focus()
-
-                  this.open = true
-              },
-              close(focusAfter) {
-                  if (! this.open) return
-
-                  this.open = false
-
-                  focusAfter && focusAfter.focus()
-              }
-          }"
-          x-on:keydown.escape.prevent.stop="close($refs.button)"
-          x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-          x-id="['dropdown-button']"
-          class="relative z-50 justify-items-end"
-      >
-          <!-- Button -->
-          <button
-              x-ref="button"
-              x-on:click="toggle()"
-              :aria-expanded="open"
-              :aria-controls="$id('dropdown-button')"
-              type="button"
-              class="flex items-center gap-2 pr-1 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700"
-          >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
-                <path fill-rule="evenodd" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" clip-rule="evenodd" />
-              </svg>
-          </button>
-
-          <!-- Panel -->
-          <ul
-              x-ref="panel"
-              x-show="open"
-              x-transition.origin.top.left
-              x-on:click.outside="close($refs.button)"
-              :id="$id('dropdown-button')"
-              style=""
-              class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
-          >
-
-             <li>
-              <%= link_to 'Edit', edit_post_comment_path(@post, comment), class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
-            </li>
-            <li>
-              <%= link_to 'Destroy', post_comment_path(@post, comment), data: { method: :delete }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-
-      <h2 class='text-xl break-words'>
-        <%= comment.body %>
-      </h2>
-    </article>
-  <% end %>
-</div>
+<%= render 'comments/commentable', commentable: @post, comment: @comment %>

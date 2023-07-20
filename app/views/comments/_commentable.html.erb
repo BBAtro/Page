@@ -1,0 +1,18 @@
+<%= tag.div do %>
+  <%= form_with model: [commentable, (@comment || commentable.comments.build)], class: 'pt-3 my-2' do |f| %>
+    <%= render 'main/errors', object: @comment %>
+
+    <div>
+      <div>
+        <%= f.label :body %>
+      </div>
+
+      <div>
+        <%= f.text_area :body, minlength: 2, class: ''%>
+      </div>
+    </div>
+    <%= f.submit "Submit", class: ""%>
+  <% end %>
+
+  <%= render commentable.comments.decorate %>
+<% end %>

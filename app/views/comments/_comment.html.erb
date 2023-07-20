@@ -1,0 +1,17 @@
+<%= tag.article class: '', id: dom_id(comment) do%>
+  <div>
+    <a href="/users/<%= @post.user.id%>">
+      <div class="flex justify-stretch border rounded-md dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 dark:hover:bg-pink-500 shadow">
+        <div class="flex-0">
+          <%= @post.user.gravatar(40, "rounded-md") %>
+        </div>
+        <div class="grow p-2 text-center">
+        <%= @post.user.login %> 
+        </div>
+      </div>
+    </a>
+    <div>
+      <h2 class="pt-6 text-2xl break-words"><%= sanitize comment.body%></h2>
+    </div>
+  </div>
+<% end %>

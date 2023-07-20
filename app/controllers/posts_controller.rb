@@ -47,9 +47,9 @@ class PostsController < ApplicationController
 
   def show
     @post = @post.decorate
-    @comment = @post.comments.build
-    @comments = @post.comments.order(created_at: :desc) #будет выдавать все комменты привязаные к определленному посту
-    @comments = @comments.decorate
+    # @comment = @post.comments.build
+    # @comments = @post.comments.order(created_at: :desc) #будет выдавать все комменты привязаные к определленному посту
+    # @comments = @comments.decorate
   end
 
   private
@@ -59,6 +59,6 @@ class PostsController < ApplicationController
   end
 
   def set_posts!
-    @post = Post.find params[:id]
+    @post = Post.find(params[:id])
   end
 end

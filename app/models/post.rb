@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-  has_many :comments, dependent: :destroy #если удалить пост удалятся и комментарии связанные с ним
+  include Commentable
+   #если удалить пост удалятся и комментарии связанные с ним
   belongs_to :user
   
   validates :title, presence: true, length: {minimum: 1, maximum: 161}
