@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
 
-  before_action :set_posts!, only: %i[show destroy edit update]
+  before_action :set_posts!, only: %i[show destroy]
 
   def index
     # @posts = Post.order(created_at: :desc)
 
-    @posts = Post.search(params[:search]).order(created_at: :desc)
+    @posts = Post.includes(:user).search(params[:search]).order(created_at: :desc)
 
     @posts = @posts.decorate
 
@@ -29,17 +29,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @post.update post_params
-      redirect_to posts_path
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @post.destroy
     redirect_to posts_path
@@ -48,7 +37,7 @@ class PostsController < ApplicationController
   def show
     @post = @post.decorate
     # @comment = @post.comments.build
-    # @comments = @post.comments.order(created_at: :desc) #будет выдавать все комменты привязаные к определленному посту
+    @comments = @post.comments.order(created_at: :desc) #будет выдавать все комменты привязаные к определленному посту
     # @comments = @comments.decorate
   end
 

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :set_post!, only: %i[show]
+  before_action :set_post!
 
   def create
     @commentable = Post.find(params["post_id"])
@@ -19,9 +19,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @commentable = Post.find(params["post_id"])
     comment = @commentable.comments.find params[:id]
     comment.destroy
-    render('posts/show')
+    redirect_to post_path(@commentable)
   end
 
   private
@@ -31,8 +32,8 @@ class CommentsController < ApplicationController
   end
 
   def set_post!
-    #@post = Post.find params[:post_id]
-    @post = @commentable.is_a?(Post) ? @commentable : @commentable.post
+    @post = Post.find params[:post_id]
+    #@post = @commentable.is_a?(Post) ? @commentable : @commentable.post
   end
 
 end

@@ -2,16 +2,14 @@
   <%= form_with model: [commentable, (@comment || commentable.comments.build)], class: 'pt-3 my-2' do |f| %>
     <%= render 'main/errors', object: @comment %>
 
-    <div>
-      <div>
-        <%= f.label :body %>
+    <div class="flex mx-4 mb-4">
+      <div class="w-3/4 mx-auto">
+        <%= f.text_area :body, minlength: 1, class: "border rounded-xl w-full p-2 mx-auto font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700"%>
       </div>
+    
+      <%= f.submit "Submit", class: "border rounded-xl w-1/4 mx-auto bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow"%>
 
-      <div>
-        <%= f.text_area :body, minlength: 2, class: ''%>
-      </div>
     </div>
-    <%= f.submit "Submit", class: ""%>
   <% end %>
 
   <%= render commentable.comments.decorate %>

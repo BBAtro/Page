@@ -20,64 +20,63 @@
     </time>
   </section>
 
-  <div
-    x-data="{
-        open: false,
-        toggle() {
-            if (this.open) {
-                return this.close()
-            }
+  <% if @post.user.id==current_user.id %>
+    <div
+      x-data="{
+          open: false,
+          toggle() {
+              if (this.open) {
+                  return this.close()
+              }
 
-            this.$refs.button.focus()
+              this.$refs.button.focus()
 
-            this.open = true
-        },
-        close(focusAfter) {
-            if (! this.open) return
+              this.open = true
+          },
+          close(focusAfter) {
+              if (! this.open) return
 
-            this.open = false
+              this.open = false
 
-            focusAfter && focusAfter.focus()
-        }
-    }"
-    x-on:keydown.escape.prevent.stop="close($refs.button)"
-    x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-    x-id="['dropdown-button']"
-    class="relative z-50 justify-items-end"
->
-    <!-- Button -->
-    <button
-        x-ref="button"
-        x-on:click="toggle()"
-        :aria-expanded="open"
-        :aria-controls="$id('dropdown-button')"
-        type="button"
-        class="flex items-center gap-2 pr-1 dark:text-white bg-white dark:bg-zinc-800 dark:border-zinc-800"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
-          <path fill-rule="evenodd" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" clip-rule="evenodd" />
-        </svg>
-    </button>
+              focusAfter && focusAfter.focus()
+          }
+      }"
+      x-on:keydown.escape.prevent.stop="close($refs.button)"
+      x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+      x-id="['dropdown-button']"
+      class="relative z-50 justify-items-end"
+  >
+      <!-- Button -->
+      <button
+          x-ref="button"
+          x-on:click="toggle()"
+          :aria-expanded="open"
+          :aria-controls="$id('dropdown-button')"
+          type="button"
+          class="flex items-center gap-2 pr-1 dark:text-white bg-white dark:bg-zinc-800 dark:border-zinc-800"
+      >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
+            <path fill-rule="evenodd" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" clip-rule="evenodd" />
+          </svg>
+      </button>
 
-    <!-- Panel -->
-    <ul
-        x-ref="panel"
-        x-show="open"
-        x-transition.origin.top.left
-        x-on:click.outside="close($refs.button)"
-        :id="$id('dropdown-button')"
-        style=""
-        class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
-    >
+      <!-- Panel -->
+      <ul
+          x-ref="panel"
+          x-show="open"
+          x-transition.origin.top.left
+          x-on:click.outside="close($refs.button)"
+          :id="$id('dropdown-button')"
+          style=""
+          class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+      >
 
-      <li>
-        <%= link_to 'Edit', edit_post_path(@post), class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
-      </li>
-      <li>
-        <%= link_to 'Destroy', post_path(@post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
-      </li>
-    </ul>
-  </div>
+        <li>
+          <%= link_to 'Destroy', post_path(@post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
+        </li>
+      </ul>
+    </div>
+  <% end %>
 </div>
 
 <div class="p-2">
@@ -86,6 +85,10 @@
   <h2 class="pt-6 text-2xl break-words"><%= sanitize @post.body%></h2>
 </div>
 
-<hr class="my-3 mx-7 mb-5">
+<hr class="my-3 mx-7 mb-3">
+
+<h3 class="text-center text-3xl font-bold">
+  Comments
+</h3>
 
 <%= render 'comments/commentable', commentable: @post, comment: @comment %>
