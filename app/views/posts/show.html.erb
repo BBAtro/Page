@@ -80,14 +80,18 @@
 </div>
 
 <div class="p-2">
-  <h1 class="text-4xl font-bold break-words"><%= sanitize @post.title%></h1>
+  <h1 class="text-6xl font-bold break-words"><%= sanitize @post.title%></h1>
 
-  <h2 class="pt-6 text-2xl break-words"><%= sanitize @post.body%></h2>
+  <div class="flex truncate">
+    <%= render @post.tags%>
+  </div>
+
+  <h2 class="pt-6 text-4xl break-words"><%= sanitize @post.body%></h2>
 </div>
 
 <hr class="my-3 mx-7 mb-3">
 
-<h3 class="text-center text-3xl font-bold">
+<h3 class="text-center text-2xl font-bold">
   Comments
 </h3>
 

@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
 
   before_action :set_posts!, only: %i[show destroy]
+  before_action :fetch_tags, only: %i[new]
 
   def index
     # @posts = Post.order(created_at: :desc)
+    @tags = Tag.where(id: params[:tag_ids]) if params[:tag_ids]
 
-    @posts = Post.includes(:user).search(params[:search]).order(created_at: :desc)
+    @posts = Post.all_by_tags(@tags).search(params[:search])
 
     @posts = @posts.decorate
 
@@ -44,10 +46,14 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body) #из присланных параметров post достать параметры title и body
+    params.require(:post).permit(:title, :body, tag_ids: []) #из присланных параметров post достать параметры title и body
   end
 
   def set_posts!
     @post = Post.find(params[:id])
+  end
+
+  def fetch_tags
+    @tags = Tag.all
   end
 end

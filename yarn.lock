@@ -491,6 +491,7 @@ __metadata:
   dependencies:
     "@rails/ujs": ^7.0.5
     autoprefixer: latest
+    jquery: ^3.7.0
     postcss: latest
     tailwindcss: ^3.3.2
     turbolinks: ^5.2.0
@@ -1344,6 +1345,13 @@ autoprefixer@latest:
   bin:
     jiti: bin/jiti.js
   checksum: 46c41cd82d01c6efdee3fc0ae9b3e86ed37457192d6366f19157d863d64961b07982ab04e9d5879576a1af99cc4d132b0b73b336094f86a5ce9fb1029ec2d29f
+  languageName: node
+  linkType: hard
+
+"jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
   languageName: node
   linkType: hard
 

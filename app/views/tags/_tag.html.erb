@@ -1,0 +1,5 @@
+<%= link_to posts_path(tag_ids: tag), class: 'mx-1.5 mt-4 mb-1.5' do %>
+  <small class="border rounded-md mx-auto p-1 text-center hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 dark:bg-zinc-600 dark:border-zinc-600 shadow">
+    <%= tag.title %>
+  </small>
+<% end %>

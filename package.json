@@ -3,6 +3,7 @@
   "dependencies": {
     "@rails/ujs": "^7.0.5",
     "autoprefixer": "latest",
+    "jquery": "^3.7.0",
     "postcss": "latest",
     "turbolinks": "^5.2.0",
     "webpack": "^5.82.1",
