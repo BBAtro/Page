@@ -15,6 +15,7 @@ module ApplicationHelper
 
   def currently_at(current_page = '')
     render partial: 'main/nbar', locals: {current_page: current_page}
+    render partial: 'main/aside'
   end
 
   def full_title(page_title = "")

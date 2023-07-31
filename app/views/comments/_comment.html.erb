@@ -2,7 +2,7 @@
   <div class="flex justify-between">
   
     <section>
-      <a href="/users/<%= @post.user.id%>">
+      <%= link_to user_path(post.user.id) do %>
         <div class="flex justify-stretch border rounded-md dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 dark:hover:bg-pink-500 shadow">
           <div class="flex-0">
             <%= @post.user.gravatar(40, "rounded-md") %>
@@ -11,7 +11,7 @@
           <%= @post.user.login %> 
           </div>
         </div>
-      </a>
+      <% end %>
 
       <time datetime="<%= comment.formatted_created_at%>" class="opacity-50">
         <%= comment.formatted_created_at%>

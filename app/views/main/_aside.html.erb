@@ -1,7 +1,7 @@
-<aside class="order-3 -z-10 w-2/12 object-right">
+<aside class="static order-3 w-2/12 object-right">
   <div class="sticky top-10">
 
-    <div class="border rounded-xl p-3 -ml-32 w-56 h-max bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
+    <div class="border -z-10 rounded-xl p-3 -ml-32 w-56 h-max bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
       <div class="mb-2 text-center text-2xl dark:text-white">
         <%= current_time %>
       </div>
@@ -10,8 +10,8 @@
       </div>
     </div>
 
-    <div class="border rounded-xl p-4 mt-8 -ml-32 w-56 h-72 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
-
+    <div class="border rounded-xl mt-8 -ml-32 w-56 h-fit bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
+      <%= content_for :aside_tablet %>
     </div>
 
   </div>

@@ -1,0 +1,93 @@
+<div class="relative flex" x-data="{ ...selectMultiple('select2') }">
+
+  <!-- Selected -->
+  <div class="flex flex-wrap border rounded-xl <%= style %> dark:border-zinc-700 dark:bg-zinc-700 shadow-md"
+      @click="isOpen = true;"
+      @keydown.arrow-down.prevent="if(dropdown.length > 0) document.getElementById(elSelect.id+'_'+dropdown[0].index).focus();">
+
+      <template x-for="(option,index) in selected;" :key="option.value">
+          <p class="m-1 self-center p-2 text-md whitespace-nowrap rounded-xl bg-cyan-400 dark:bg-pink-500 cursor-pointer hover:bg-red-500 dark:hover:bg-red-500"
+              x-text="option.text"
+              @click="toggle(option)">
+          </p>
+      </template>
+
+      <input type="text" placeholder="Select tags" class="pl-2 mt-1 mr-1 -mb-1 rounded-xl <%= style %> h-10 dark:bg-zinc-600"
+          x-model="term"
+          x-ref="input" />
+
+  </div>
+
+  <!-- Dropdown -->
+  <div class="absolute rounded-xl right-44 z-10 mt-12 w-1/2 max-h-72 overflow-y-auto dark:text-white bg-white dark:bg-zinc-700 shadow-md"
+      x-show="isOpen"
+      @mousedown.away="isOpen = false">
+
+      <template x-for="(option,index) in dropdown" :key="option.value">
+          <div class="cursor-pointer hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 focus:outline-none"
+              :class="(term.length > 0 && !option.text.toLowerCase().includes(term.toLowerCase())) && 'hidden';"
+              x-init="$el.id = elSelect.id + '_' + option.index; $el.tabIndex = option.index;"
+              @click="toggle(option)"
+              @keydown.enter.prevent="toggle(option);"
+              @keydown.arrow-up.prevent="if ($el.previousElementSibling != null) $el.previousElementSibling.focus();"
+              @keydown.arrow-down.prevent="if ($el.nextElementSibling != null) $el.nextElementSibling.focus();">
+
+              <p class="p-2"
+                x-text="option.text"></p>
+          </div>
+      </template>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('selectMultiple', (elSelectId) => ({
+
+            elSelect: document.getElementById(elSelectId),
+            isOpen: false,
+            term: '',
+
+            selected: [],
+            dropdown: [],
+
+            // in the <select> element, set the attributes :
+            //  "multiple" to avoid to Always set "selected" to the first item
+            //  class="hidden" (better than hide it with javascript which has a slow reaction)
+            init()
+            {
+                for(var index=0; index < this.elSelect.options.length; index++)
+                {
+                    if (this.elSelect.options[index].selected)
+                        this.selected.push(this.elSelect.options[index]);
+                    else
+                        this.dropdown.push(this.elSelect.options[index]);
+                }
+            },
+
+            toggle(option)
+            {
+                var property1 = (option.selected == true) ? 'dropdown' : 'selected';
+                var property2 = (option.selected == true) ? 'selected' : 'dropdown';
+
+                option.selected = !option.selected;
+
+                // add
+                this[property1].push(option);
+
+                // remove
+                this[property2] = this[property2].filter((opt, index)=>{
+                    return opt.value != option.value;
+                });
+                
+                // reorder this.dropdown to their original select.options indexes
+                if (property1 == 'dropdown')
+                    this.dropdown.sort((opt1, opt2) => (opt1.index > opt2.index) ? 1 : -1)
+
+                // after adding, re-focus the input
+                if (option.selected)
+                    this.$refs.input.focus();
+            },
+        }))
+    });
+  </script>
+</div>

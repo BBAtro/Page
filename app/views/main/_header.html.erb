@@ -1,4 +1,4 @@
-<header class="sticky -top-20 border rounded-xl w-4/6 mx-auto mt-1 p-2 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-lg">
+<header class="sticky -top-20 z-50 border rounded-xl w-4/6 mx-auto mt-1 p-2 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-lg">
     <div class='flex justify-between items-center'>
         <span class="flex text-4xl ml-3 m-2 w-40 items-center dark:text-white ">
             <div x-show="!darkMode">
@@ -66,7 +66,7 @@
                         x-on:click.outside="close($refs.button)"
                         :id="$id('dropdown-button')"
                         style=""
-                        class="absolute z-50 left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+                        class="absolute z-50 overflow-visible left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
 
                         <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm dark:text-white hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>

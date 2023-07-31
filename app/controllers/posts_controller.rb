@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
     @posts = Post.all_by_tags(@tags).search(params[:search])
 
+    @tags = Tag.all
+
     @posts = @posts.decorate
 
     # respond_to do |format|

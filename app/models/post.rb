@@ -8,16 +8,16 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: {minimum: 1, maximum: 161}
   validates :body, presence: true, length: {minimum: 1}
 
-  scope :all_by_tags, ->(tags) do
+  scope :all_by_tags, lambda { |tags| 
     posts = includes(:user)
-    if tags
+    posts = if tags
       posts = posts.joins(:tags).where(tags: tags).preload(:tags)
     else
       posts = posts.includes(:post_tags, :tags)
     end
      
     posts.order(created_at: :desc)
-  end
+  }
 
   def self.search(search)
     if search 
