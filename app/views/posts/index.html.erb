@@ -1,21 +1,26 @@
-<%# <%= @posts.inspect %> 
 <% provide :page_title, "Posts" %>
 <% currently_at 'Posts'%>
 
 <% content_for :aside_tablet do %>
   <%= form_with url: posts_path, method: :get do |f|%>
-    <div class="">
+    <div>
         <%= f.collection_select :tag_ids, (@tags || []), :id, :title, {selected: params[:tag_ids]},
       multiple: true, required: true,
       class: 'hidden', id: "select2" %>
       
-      <div class="">
+      <div>
         <%= render "main/tagsel", style: "m-1 mx-auto w-52" %>
 
         <div class="my-1 mx-auto w-5/6">
-        <%= f.submit "Submit",
-        class: 'border rounded-xl w-full p-2 mx-auto bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow'%>
-    </div>
+          <div class="absolute pointer-events-none" x-show="!darkMode">
+            <%= image_tag("approve.svg", class: "ml-10 mt-1.5 w-8")%>
+          </div>
+          <div class="absolute pointer-events-none" x-show="darkMode">
+            <%= image_tag("dark_approve.svg", class: "ml-10 mt-1.5 w-8")%>
+          </div>
+          <%= f.submit "Submit",
+          class: 'border rounded-xl w-full p-2 pl-6 mx-auto cursor-pointer dark:text-white bg-cyan-400 shadow-cyan-400 border-cyan-400 hover:bg-cyan-500 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 dark:hover:bg-pink-400 shadow' %>
+        </div>
       </div>
   <% end %>
 <% end %>
@@ -25,18 +30,34 @@
     <div class="border rounded-xl h-15 p-0.5 mx-10 my-4 text-black dark:bg-zinc-700 dark:border-zinc-700 shadow">
       <%= form_tag('/posts', method: 'get', local: true) do %>
         <%= text_field_tag(:search, nil, placeholder: 'Search for anything...', class: 'border rounded-xl indent-4 h-12 w-60 placeholder:opacity-50 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 shadow') %>
-        <%= submit_tag("Search", class: 'border rounded-xl h-12 w-20 dark:text-white dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow') %>
+        <div class="absolute" x-show="!darkMode">
+          <%= image_tag("magnifier.svg", class: "ml-64 -mt-10 w-8 pointer-events-none")%>
+        </div>
+        <div class="absolute" x-show="darkMode">
+          <%= image_tag("dark_magnifier.svg", class: "ml-64 -mt-10 w-8 pointer-events-none")%>
+        </div>
+        <%= submit_tag("", class: 'border rounded-xl h-12 w-14 cursor-pointer dark:text-white dark:bg-zinc-600 dark:border-zinc-600 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow') %>
       <% end %>
     </div>
 
     <% if user_signed_in? %>
-      <%= link_to 'Create post', new_post_path,
-      class: "border rounded-xl h-15 w-80 mr-10 my-4 p-2 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+     <%= link_to new_post_path,
+      class: "border rounded-xl h-15 w-80 mr-10 my-4 py-3 pl-4 text-center text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" do %>
+        <div class="object-right">
+          <div class="absolute" x-show="!darkMode">
+            <%= image_tag("add_new.svg", class: "ml-16 -mt-0.5 w-8")%>
+          </div>
+          <div class="absolute" x-show="darkMode">
+            <%= image_tag("dark_add_new.svg", class: "ml-16 -mt-0.5 w-8")%>
+          </div>
+          <p class="ml-2">Create Post<p>
+        </div>
+      <% end %>
     <% end %>
     
   </div>
   
-  <hr class="my-3 mx-10">
+  <hr class="my-3 mx-10 dark:border-zinc-600">
 
   <% @posts.each do |post| %>
 
@@ -113,7 +134,13 @@
               >
                 
                   <li>
-                    <%= link_to 'Destroy', post_path(post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
+                    <div class="absolute pointer-events-none" x-show="!darkMode">
+                      <%= image_tag("trash.svg", class: "m-2 w-6")%>
+                    </div>
+                    <div class="absolute pointer-events-none" x-show="darkMode">
+                      <%= image_tag("dark_trash.svg", class: "m-2 w-6")%>
+                    </div>
+                    <%= link_to 'Destroy', post_path(post), data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md pl-9 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500"%>
                   </li>
                 
               </ul>
@@ -121,7 +148,7 @@
           <% end %>
         </div>
 
-        <h2 class="break-words hover:underline m-4 -indent-2">
+        <h2 class="break-words m-4 -indent-2 hover:text-cyan-400 dark:hover:text-pink-500">
           <%= link_to sanitize(post.title), post_path(post), class: "text-4xl font-bold m-2 py-2" %>
         </h2>
 

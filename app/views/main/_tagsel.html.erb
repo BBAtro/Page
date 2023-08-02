@@ -1,7 +1,7 @@
 <div class="relative flex" x-data="{ ...selectMultiple('select2') }">
 
   <!-- Selected -->
-  <div class="flex flex-wrap border rounded-xl <%= style %> dark:border-zinc-700 dark:bg-zinc-700 shadow-md"
+  <div class="flex flex-wrap border rounded-xl px-1.5 mx-auto dark:border-zinc-700 dark:bg-zinc-700 shadow-md"
       @click="isOpen = true;"
       @keydown.arrow-down.prevent="if(dropdown.length > 0) document.getElementById(elSelect.id+'_'+dropdown[0].index).focus();">
 
@@ -12,7 +12,7 @@
           </p>
       </template>
 
-      <input type="text" placeholder="Select tags" class="pl-2 mt-1 mr-1 -mb-1 rounded-xl <%= style %> h-10 dark:bg-zinc-600"
+      <input type="text" placeholder="Select tags" class="rounded-xl <%= style %> pl-2 mt-1 h-10 dark:bg-zinc-600"
           x-model="term"
           x-ref="input" />
 

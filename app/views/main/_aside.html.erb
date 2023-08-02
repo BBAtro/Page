@@ -2,6 +2,15 @@
   <div class="sticky top-10">
 
     <div class="border -z-10 rounded-xl p-3 -ml-32 w-56 h-max bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
+      <div x-show="!darkMode">
+        <%= image_tag("date.svg", class: "mx-auto w-6")%>
+      </div>
+      <div x-show="darkMode">
+        <%= image_tag("dark_date.svg", class: "mx-auto w-6")%>
+      </div>
+
+      <hr class="my-2 dark:border-zinc-600">
+
       <div class="mb-2 text-center text-2xl dark:text-white">
         <%= current_time %>
       </div>

@@ -24,10 +24,10 @@
     </div>
 
     <div class="mx-auto w-5/6">
-        <%= render 'main/tagsel', style: 'mx-auto'  %>
+        <%= render 'main/tagsel', style: 'm-1'  %>
     </div>
 
-    <hr class="my-5 mx-10">
+    <hr class="my-5 mx-10 dark:border-zinc-600">
 
     <div class="mx-auto mb-4 p-1 w-28 ">
       <%= f.label :body, class: "border rounded-xl px-6 py-2 mx-auto my-3 font-bold text-2xl dark:bg-zinc-700 dark:border-zinc-700" %>
@@ -39,7 +39,13 @@
     </div>
 
     <div class="mx-auto w-2/6">
+          <div class="absolute pointer-events-none" x-show="!darkMode">
+            <%= image_tag("approve.svg", class: "ml-20 mt-6 w-8 pointer-events-none")%>
+          </div>
+          <div class="absolute pointer-events-none" x-show="darkMode">
+            <%= image_tag("dark_approve.svg", class: "ml-20 mt-6 w-8 pointer-events-none")%>
+          </div>
         <%= f.submit "Submit",
-        class: 'border rounded-xl w-full p-2 mx-auto my-5 bg-sky-400 shadow-sky-400 border-sky-400 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 shadow'%>
+        class: 'border rounded-xl w-full p-2 pl-7 mx-auto my-5 cursor-pointer bg-cyan-400 shadow-cyan-400 border-cyan-400 hover:bg-cyan-500 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 dark:hover:bg-pink-400 shadow'%>
     </div>
 <% end %>

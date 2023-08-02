@@ -2,9 +2,21 @@
   <nav class="order-1 w-2/12 object-left">
     <div class="sticky top-10 border rounded-xl p-3 ml-56 h-72 w-56 bg-white dark:bg-zinc-800 dark:border-zinc-800 shadow-xl">
       <ul class="grid container border rounded-xl mx-auto items-center text-2xl text-center dark:text-white dark:bg-zinc-700 dark:border-zinc-700 shadow">
+        <div class="absolute pointer-events-none" x-show="!darkMode">
+          <%= image_tag("home.svg", class: "ml-3 -mt-8 w-8")%>
+        </div>
+        <div class="absolute pointer-events-none" x-show="darkMode">
+          <%= image_tag("dark_home.svg", class: "ml-3 -mt-8 w-8")%>
+        </div>
         <%= nav_tab 'Home',
         root_path, class: "rounded-xl mx-1 my-0.5 font-bold hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500",
           current_page: current_page %>
+        <div class="absolute pointer-events-none" x-show="!darkMode">
+          <%= image_tag("newspaper.svg", class: "ml-3 mt-9 w-8")%>
+        </div>
+        <div class="absolute pointer-events-none" x-show="darkMode">
+          <%= image_tag("dark_newspaper.svg", class: "ml-3 mt-9 w-8")%>
+        </div>
         <%= nav_tab 'Posts',
         posts_path, class: "rounded-xl mx-1 mb-0.5 font-bold hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500",
           current_page: current_page%>

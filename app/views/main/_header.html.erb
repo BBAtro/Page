@@ -66,20 +66,33 @@
                         x-on:click.outside="close($refs.button)"
                         :id="$id('dropdown-button')"
                         style=""
-                        class="absolute z-50 overflow-visible left-0 mt-2 w-28 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
+                        class="absolute z-50 overflow-visible left-0 mt-2 w-40 rounded-md bg-white dark:bg-zinc-700 dark:border-zinc-700 shadow-md"
                     >
+                        <div class="absolute pointer-events-none" x-show="!darkMode">
+                            <%= image_tag("account.svg", class: "ml-2 mt-2 w-6")%>
+                        </div>
+                        <div class="absolute pointer-events-none" x-show="darkMode">
+                            <%= image_tag("dark_account.svg", class: "ml-2 mt-2 w-6")%>
+                        </div>
+                        <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md pl-9 py-2.5 text-left text-md dark:text-white hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                        
+                        <hr class="dark:border-zinc-600">
 
-                        <%= link_to 'Profile', users_path, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm dark:text-white hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
-
-                        <%= link_to 'Log Out', session_path, data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
+                        <div class="absolute pointer-events-none" x-show="!darkMode">
+                            <%= image_tag("logout.svg", class: "ml-2.5 mt-2.5 w-5")%>
+                        </div>
+                        <div class="absolute pointer-events-none" x-show="darkMode">
+                            <%= image_tag("dark_logout.svg", class: "ml-2.5 mt-2.5 w-5")%>
+                        </div>
+                        <%= link_to 'Log Out', session_path, data: { method: :delete, confirm: 'Are you sure?' }, class: "flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md pl-9 py-2.5 text-red-500 text-left text-sm hover:bg-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500" %>
                             
                     </ul>
                 </div>
             </div>
         <% else %>
             <div class="text-xl my-auto mr-4 space-x-4 dark:text-white">
-            <%= link_to 'Sign Up', new_user_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:text-white dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
-            <%= link_to 'Log In', new_session_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+            <%= link_to 'Sign Up', new_user_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl font-bold dark:text-white dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
+            <%= link_to 'Log In', new_session_path, class: "border rounded-xl w-11/12 p-3 mx-auto text-xl font-bold dark:bg-zinc-700 dark:border-zinc-700  hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow" %>
             </div>
         <% end %>
     </div>
