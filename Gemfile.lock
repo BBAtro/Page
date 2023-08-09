@@ -179,6 +179,8 @@ GEM
     sqlite3 (1.6.2-x86_64-linux)
     thor (1.2.2)
     timeout (0.3.2)
+    tinymce-rails (6.6.1)
+      railties (>= 3.1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     valid_email2 (4.0.6)
@@ -210,6 +212,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.3)
   sprockets-rails
   sqlite3 (~> 1.4)
+  tinymce-rails (~> 6.6, >= 6.6.1)
   tzinfo-data
   valid_email2 (~> 4.0, >= 4.0.6)
   web-console

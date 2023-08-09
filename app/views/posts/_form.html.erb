@@ -10,7 +10,7 @@
 
     <div class="mx-auto w-10/12">
       <%= f.text_area :title, required: true, minlength: 2,
-      class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+      class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md" %>
     </div>
 
     <div class="mx-auto mt-4 mb-4">
@@ -34,8 +34,9 @@
     </div>
 
     <div class="mx-auto w-11/12">
+        <trix-editor input="x" class="border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"></trix-editor>
         <%= f.text_area :body, required: true, minlength: 2,
-        class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"%>
+        class: "hidden", id: "x"%>
     </div>
 
     <div class="mx-auto w-2/6">
