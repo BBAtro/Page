@@ -34,9 +34,8 @@
     </div>
 
     <div class="mx-auto w-11/12">
-        <trix-editor input="x" class="border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md"></trix-editor>
-        <%= f.text_area :body, required: true, minlength: 2,
-        class: "hidden", id: "x"%>
+        <%= f.rich_text_area :body, required: true, minlength: 2,
+        class: "border rounded-xl w-full h-fit p-3 mx-auto text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow-md", id: "x"%>
     </div>
 
     <div class="mx-auto w-2/6">
@@ -50,3 +49,4 @@
         class: 'border rounded-xl w-full p-2 pl-7 mx-auto my-5 cursor-pointer bg-cyan-400 shadow-cyan-400 border-cyan-400 hover:bg-cyan-500 dark:bg-pink-500 dark:border-pink-500 dark:shadow-pink-500 dark:hover:bg-pink-400 shadow'%>
     </div>
 <% end %>
+

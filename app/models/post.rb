@@ -2,6 +2,9 @@ class Post < ApplicationRecord
   include Commentable
    #если удалить пост удалятся и комментарии связанные с ним
   belongs_to :user
+
+  has_rich_text :body
+
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   

@@ -25,7 +25,7 @@
   <% end %>
 <% end %>
 
-<div class="flex flex-col justify-items-center">
+<div class="flex flex-col z-30 justify-items-center">
   <div class="flex justify-between">
     <div class="border rounded-xl h-15 p-0.5 mx-10 my-4 text-black dark:bg-zinc-700 dark:border-zinc-700 shadow">
       <%= form_tag('/posts', method: 'get', local: true) do %>
@@ -106,7 +106,7 @@
               x-on:keydown.escape.prevent.stop="close($refs.button)"
               x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
               x-id="['dropdown-button']"
-              class="relative z-50 justify-items-end"
+              class="relative z-30 justify-items-end"
           >
               <!-- Button -->
               <button
@@ -117,7 +117,7 @@
                   type="button"
                   class="flex items-center gap-2 pr-1 dark:text-white bg-white dark:bg-zinc-700 dark:border-zinc-700"
               >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="z-30 h-6 w-6 text-gray-400" viewBox="0 0 21 21" fill="currentColor">
                     <path fill-rule="evenodd" d="M12 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" clip-rule="evenodd" />
                   </svg>
               </button>
