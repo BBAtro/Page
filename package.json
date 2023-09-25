@@ -1,16 +1,16 @@
 {
   "name": "app",
   "dependencies": {
-    "@rails/ujs": "^7.0.5",
+    "@rails/actiontext": "^7.0.8",
+    "@rails/ujs": "^7.0.8",
     "autoprefixer": "latest",
+    "esbuild": "^0.19.3",
     "jquery": "^3.7.0",
-    "postcss": "latest",
-    "turbolinks": "^5.2.0",
-    "webpack": "^5.82.1",
-    "webpack-cli": "^5.1.1"
+    "postcss": "^8.4.30",
+    "trix": "^2.0.6"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "esbuild app/javascript/*.* --bundle --minify --outdir=app/assets/builds --public-path=assets",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "devDependencies": {
