@@ -9,7 +9,7 @@
 
   <div class="flex flex-col justify-items-center w-5/12">
     <div class="mx-auto">
-      <%= @user.gravatar(244, "rounded-t-xl") %>
+      <%= @user.gravatar(244, "rounded-xl") %>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
      <%= @user.login %>
     </div>
 
-    <% if @user.description.present? %>
+    <% if @user.description.nil? %>
       <h1 class="border rounded-xl p-2 mb-2 w-4/12 mx-auto object-center text-center font-bold text-xl dark:bg-zinc-700 dark:border-zinc-700 shadow">
         Description
       </h1>
