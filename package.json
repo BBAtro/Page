@@ -1,13 +1,14 @@
 {
   "name": "app",
   "dependencies": {
-    "@rails/actiontext": "^7.0.8",
+    "@rails/actiontext": "^7.1.2",
     "@rails/ujs": "^7.0.8",
     "autoprefixer": "latest",
-    "esbuild": "^0.19.3",
+    "esbuild": "^0.19.5",
     "jquery": "^3.7.0",
     "postcss": "^8.4.30",
-    "trix": "^2.0.6"
+    "tailwind": "^4.0.0",
+    "trix": "^2.0.8"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --minify --outdir=app/assets/builds --public-path=assets",
