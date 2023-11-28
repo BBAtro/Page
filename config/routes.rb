@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
+  resources :questions, only: %i[index]
+
   resources :posts, concerns: :commentable, except: %i[edit update] do 
     resources :comments, only: %i[create destroy]
   end
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show new create edit update]
 
   # get '/users/:id', to: 'users#show'
-
 
   resource :session, only: %i[new create destroy]
 

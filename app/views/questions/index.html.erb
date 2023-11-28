@@ -1,0 +1,27 @@
+<% provide :page_title, "FAQ" %>
+<% currently_at 'FAQ'%>
+
+<div x-data="{ openedIndex: 1 }" class="flex flex-col p-4 text-xl">
+  <div @click="openedIndex == 1 ? openedIndex = -1 : openedIndex = 1" class="z-10 rounded-xl flex items-center justify-between bg-gray-100 border p-4 font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow">
+    <p>What is PageBuddy?</p>
+    <span :class="openedIndex == 1 ? 'fa-chevron-down' : 'fa-chevron-up'" class="fas"></span>
+  </div>
+  <div x-show.transition.in.duration.800ms="openedIndex == 1" class="z-0 rounded-b-xl border mx-4 p-4 bg-gray-100 dark:bg-zinc-700 dark:border-zinc-700">
+    This is a site where you can discuss and share information, whether it is a meme, a life story, an article, a guide or your own blog on PageBuddy, all of the above are welcome (within the law, of course).  
+  </div>
+  <div @click="openedIndex == 2 ? openedIndex = -1 : openedIndex = 2" class="z-10 rounded-xl flex items-center justify-between bg-gray-100 border mt-2 p-4 font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow">
+    <p>Who created this site?</p>
+    <span :class="openedIndex == 2 ? 'fa-chevron-down' : 'fa-chevron-up'" class="fas"></span>
+  </div>
+    <div x-show.transition.in.duration.800ms="openedIndex == 2" class="z-0 rounded-b-xl border mx-4 p-4 bg-gray-100 dark:bg-zinc-700 dark:border-zinc-700">
+      This site was created by one person (that's me) and my nickname is ByeByeAtro (BBAtro).
+    </div>
+  <div @click="openedIndex == 3 ? openedIndex = -1 : openedIndex = 3" class="z-10 rounded-xl flex items-center justify-between bg-gray-100 border mt-2 p-4 font-bold dark:bg-zinc-700 dark:border-zinc-700 hover:bg-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400 dark:hover:border-pink-500 dark:hover:bg-pink-500 dark:hover:shadow-pink-500 shadow">
+    <p>What was the purpose of this site?</p>
+    <span :class="openedIndex == 3 ? 'fa-chevron-down' : 'fa-chevron-up'" class="fas"></span>
+  </div>
+    <div x-show.transition.in.duration.800ms="openedIndex == 3" class="z-0 rounded-b-xl border mx-4 p-4 bg-gray-100 dark:bg-zinc-700 dark:border-zinc-700   ">
+      This site was created with several purposes in mind. First, to work on something big(for me). Secondly, to gain experience in creating sites and programming in general. Third, just to give something to people 
+    </div>
+</div>
+
