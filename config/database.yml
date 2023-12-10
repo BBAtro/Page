@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
+  database: page_development
 
 test:
   <<: *default
-  database: myapp_test
+  database: page_test
 
 production:
   <<: *default
-  database: myapp_production
+  database: page_production
